@@ -34,11 +34,17 @@ class StudentController {
       return res.status(400).json({ error: 'Student already exists' });
     }
 
-    const { id, name, email, age, height, weight } = await Student.create(
-      req.body
-    );
+    const {
+      id,
+      name,
+      email,
+      age,
+      height,
+      weight,
+      avatar_id,
+    } = await Student.create(req.body);
 
-    return res.json({ id, name, email, age, height, weight });
+    return res.json({ id, name, email, age, height, weight, avatar_id });
   }
 
   async update(req, res) {
@@ -69,11 +75,17 @@ class StudentController {
       return res.status(400).json({ error: 'e-mail already exists' });
     }
 
-    const { id, name, email, age, height, weight } = await student.update(
-      req.body
-    );
+    const {
+      id,
+      name,
+      email,
+      age,
+      height,
+      weight,
+      avatar_id,
+    } = await student.update(req.body);
 
-    return res.json({ id, name, email, age, height, weight });
+    return res.json({ id, name, email, age, height, weight, avatar_id });
   }
 }
 
