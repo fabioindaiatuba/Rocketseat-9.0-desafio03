@@ -3,8 +3,23 @@ import Op from 'sequelize/lib/operators';
 import * as Yup from 'yup';
 
 import Student from '../models/Student';
+import File from '../models/File';
 
 class StudentController {
+  async index(req, res) {
+    const students = await Student.findAll({
+      attributes: ['id', 'name', 'email', 'age', 'height', 'weight'],
+      include: [
+        {
+          model: File,
+          as: 'avatar',
+          attributes: ['name', 'path', 'url'],
+        },
+      ],
+    });
+    return res.json(students);
+  }
+
   async store(req, res) {
     const Schema = Yup.object().shape({
       name: Yup.string().required(),

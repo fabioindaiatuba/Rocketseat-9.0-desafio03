@@ -17,3 +17,5 @@
 * Criada rotas para salvar arquivos:
   + POST /files
 * Associação de File com Students no campo Avatar.
+* Rota para listar Students com Avatar.
+  + GET /students
