@@ -19,3 +19,8 @@
 * Associação de File com Students no campo Avatar.
 * Rota para listar Students com Avatar.
   + GET /students
+* Rotas para criar, listar, atualizar e deletar Planos.
+  + GET /plans
+  + POST /plans
+  + PUT /plans/:id
+  + DELETE /plans/:id
