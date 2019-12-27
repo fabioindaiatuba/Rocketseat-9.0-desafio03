@@ -14,7 +14,7 @@ class RegistratonController {
         {
           model: Student,
           as: 'student',
-          attributes: ['id', 'name'],
+          attributes: ['id', 'name', 'email'],
         },
         {
           model: Plan,
@@ -128,6 +128,18 @@ class RegistratonController {
     });
 
     return res.json(registration);
+  }
+
+  async delete(req, res) {
+    const registration = await Registration.findByPk(req.params.id);
+
+    if (!registration) {
+      return res.status(401).json({ error: 'Registration not found' });
+    }
+
+    await registration.destroy();
+
+    return res.send();
   }
 }
 

@@ -102,6 +102,16 @@ class StudentController {
 
     return res.json({ id, name, email, age, height, weight, avatar_id });
   }
+
+  async delete(req, res) {
+    const student = await Student.findByPk(req.params.id);
+    if (!student) {
+      return res.status(400).json({ error: 'User not found' });
+    }
+    await student.destroy();
+
+    return res.send();
+  }
 }
 
 export default new StudentController();

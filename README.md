@@ -10,8 +10,10 @@
   + POST /sessions
 * Middleware para validar usuario logado.
 * Criada as funcoes de CRUD de alunos:
+  + GET /students
   + POST /students
   + PUT /students/:id
+  + DELETE /students/:id
 
 ### Funções Modulo 03:
 * Criada rotas para salvar arquivos:
