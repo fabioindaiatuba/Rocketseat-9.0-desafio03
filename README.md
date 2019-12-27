@@ -24,3 +24,8 @@
   + POST /plans
   + PUT /plans/:id
   + DELETE /plans/:id
+* Rotas para criar, listar, atualizar e deletar Matriculas.
+  + GET /registrations
+  + POST /registrations
+  + PUT /registrations/:id
+  + DELETE /plans/:id
