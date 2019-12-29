@@ -1,5 +1,13 @@
 import * as Yup from 'yup';
-import { parseISO, addMonths, startOfDay, endOfDay, isPast } from 'date-fns';
+import {
+  parseISO,
+  addMonths,
+  startOfDay,
+  endOfDay,
+  isPast,
+  format,
+} from 'date-fns';
+import pt from 'date-fns/locale/pt-BR';
 
 import Mail from '../../lib/Mail';
 
@@ -77,8 +85,15 @@ class RegistratonController {
     await Mail.sendMail({
       to: `${isStudent.name} <${isStudent.email}>`,
       subject: 'Matrícula efetuada',
-      text:
-        'Sua matricula foi realizada com sucesso na GymPoint. Seja bem-vindo!',
+      template: 'registration',
+      context: {
+        student: isStudent.name,
+        plan: isPlan.title,
+        endDate: format(end_date, "dd 'de' MMMM 'de' yyyy '.'", {
+          locale: pt,
+        }),
+        price,
+      },
     });
 
     return res.json(registration);
