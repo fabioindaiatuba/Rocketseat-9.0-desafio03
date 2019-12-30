@@ -33,3 +33,5 @@
   + DELETE /plans/:id
 * Rotinas para envio de e-Mail com Template personaizado.
 * Criado Filas para envio de email.
+* Tratamento de excecoes.
+* Variaveis de ambiente (.env)
