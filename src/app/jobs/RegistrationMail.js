@@ -11,8 +11,6 @@ class RegistrationMail {
   async handle({ data }) {
     const { student, plan, end_date, price } = data;
 
-    console.log('o Job executou');
-
     await Mail.sendMail({
       to: `${student.name} <${student.email}>`,
       subject: 'Matrícula efetuada',
