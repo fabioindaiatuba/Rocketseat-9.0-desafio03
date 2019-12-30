@@ -1,15 +1,8 @@
 import * as Yup from 'yup';
-import {
-  parseISO,
-  addMonths,
-  startOfDay,
-  endOfDay,
-  isPast,
-  format,
-} from 'date-fns';
-import pt from 'date-fns/locale/pt-BR';
+import { parseISO, addMonths, startOfDay, endOfDay, isPast } from 'date-fns';
 
-import Mail from '../../lib/Mail';
+import Queue from '../../lib/Queue';
+import RegistrationMail from '../jobs/RegistrationMail';
 
 import Registration from '../models/Registration';
 import Student from '../models/Student';
@@ -82,18 +75,11 @@ class RegistratonController {
       plan_id,
     });
 
-    await Mail.sendMail({
-      to: `${isStudent.name} <${isStudent.email}>`,
-      subject: 'Matrícula efetuada',
-      template: 'registration',
-      context: {
-        student: isStudent.name,
-        plan: isPlan.title,
-        endDate: format(end_date, "dd 'de' MMMM 'de' yyyy '.'", {
-          locale: pt,
-        }),
-        price,
-      },
+    await Queue.add(RegistrationMail.key, {
+      student: isStudent,
+      plan: isPlan,
+      price,
+      end_date,
     });
 
     return res.json(registration);
