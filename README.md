@@ -2,7 +2,7 @@
 
 ## Back-end GymPoint.
 
-### Funções Modulo 02:
+### Funções Modulo 02 :
 * Criada as funçoes de criar usuario e atualizar usuario logado:
   + POST /users
   + PUT /users
@@ -13,9 +13,9 @@
   + GET /students
   + POST /students
   + PUT /students/:id
-  + DELETE /students/:id
 
 ### Funções Modulo 03:
+* Copiado modulo02 com funcionalidades acima ja feitas
 * Criada rotas para salvar arquivos:
   + POST /files
 * Associação de File com Students no campo Avatar.
