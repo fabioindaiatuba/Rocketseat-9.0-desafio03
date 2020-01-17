@@ -35,3 +35,5 @@
 * Criado Filas para envio de email.
 * Tratamento de excecoes.
 * Variaveis de ambiente (.env)
+
+#### Desafio finalizado.
